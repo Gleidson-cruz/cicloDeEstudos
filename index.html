@@ -10,19 +10,23 @@
     
     <div class="content">
         <form id="myform">
-            <input type="text" id="insertInfo" placeholder="Materia">
+            <input type="text" id="insertMat" placeholder="Materia">
             <p id="alertMat"></p>
-            <input type="text" id="insertPeso" placeholder="Peso">
+            <input type="text" id="insertPeso" placeholder="Dificuldade 1-5">
             <p id="alertPeso"></p>
-            <input type="text" id="insertCarga" placeholder="Carga">
-            <p id="alertCarga"></p>
+            <input type="text" id="insertCargaDia" placeholder="quantas horas por dia">
+            <p id="alertCargaDia"></p>
+            <input type="text" id="insertCargaSemana" placeholder="quantos dias na semana">
+            <p id="alertCargaSemana"></p>
             <input type="submit" id="validar" value="Adicionar">
         </form>
         <div>
             <p id="passalerta"></p>
         </div>
         <div id="ciclo">
-            <!--Todo conteudo daqui terá um id "contentaddc"-->
+            <h1 id="titleCiclo">Suas materias aparecerão aqui</h1>
+
+            <input type="button" id="criar" value="Criar ciclo">
         </div>
     </div>
 
