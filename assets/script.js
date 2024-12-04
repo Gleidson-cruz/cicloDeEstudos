@@ -4,6 +4,7 @@ let cargaHorariaDia = null;
 let cargaHorariaSemana = null;
 let cargaHorariaTotal = null;
 let somaDificuldade = [];
+let materiasCriadas = [];
 
 const criarCiclo = document.getElementById("criar");
 
@@ -109,7 +110,7 @@ limparMsg()
     cargaHorariaDia = parseInt(matCargaDia);
     cargaHorariaSemana = parseInt(matCargaSemana);
     nomeMateria = matUser;
-    pesoMateria = userPeso;
+    pesoMateria = parseInt(userPeso);
     cargaHorariaTotal = cargaHorariaDia * cargaHorariaSemana;
 
     document.getElementById("passalerta").innerHTML =
@@ -117,7 +118,10 @@ limparMsg()
     document.getElementById("passalerta").style.color = "#64b46f";
 
     somaDificuldade.push(parseInt(userPeso))
-    console.log(somaDificuldade)
+    organizarCiclo()
+    exibirMaterias()
+    somaPeso()
+    console.log(somaDificuldade) //depuração
     form.reset();
   }
 });
@@ -130,6 +134,35 @@ function somaPeso() {
         soma += somaDificuldade[i];
     }
     
-    console.log(somaDificuldade)
-    console.log(soma);
+    console.log(somaDificuldade) //depuração
+    console.log(soma); //depuração
+}
+
+function organizarCiclo() {
+    class Materias {
+        constructor(nome, peso, carga){
+            this.nome = nome;
+            this.peso = peso;
+            this.carga = carga;
+        }
+
+        exibirInfo(){
+            return `nome: ${this.nome}, peso: ${this.peso}, carga: ${this.carga}`
+        }
+    }
+
+    const novaMateria = new Materias(nomeMateria, pesoMateria, cargaHorariaTotal)
+    materiasCriadas.push(novaMateria)
+
+    console.log(materiasCriadas) //depuração
+}
+
+function exibirMaterias() {
+    const materiasDiv = document.getElementById("ciclo")
+    materiasDiv.innerHTML = "";
+    materiasCriadas.forEach(materia => {
+        const div = document.createElement("div");
+        div.textContent = materia.nome;
+        materiasDiv.appendChild(div)
+    });
 }
